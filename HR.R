@@ -22,4 +22,9 @@ unique(df$previous_year_rating)
 which(is.na(df$previous_year_rating))
 df$previous_year_rating[is.na(df$previous_year_rating)] <- 0
 
+# get dummy variables for categorical columns with "dummies" package 
+df2 <- dummy.data.frame(df)
+##Simple Logistic regression 
 
+glm_fit = glm(age~is_promoted, data = df, family = binomial)
+summary(glm_fit)
