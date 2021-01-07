@@ -24,7 +24,13 @@ df$previous_year_rating[is.na(df$previous_year_rating)] <- 0
 
 # get dummy variables for categorical columns with "dummies" package 
 df2 <- dummy.data.frame(df)
+53,50,45,44,10
+df2 <-df2[,-6]
 ##Simple Logistic regression 
+glm_fit = glm(age~is_promoted, data = df2)
+summary(glm_fit)
 
-glm_fit = glm(age~is_promoted, data = df, family = binomial)
+# Logistic regression 
+
+glm_fit = glm(is_promoted~., data = df2)
 summary(glm_fit)
