@@ -43,4 +43,9 @@ glm_pred = rep("no", 54808)
 #where the probability is higher or equal to 50%. the values is yes
 glm_pred[glm_prob>=0.50] = "yes"
 
+#confusion matrix 
+table(glm_pred, df2$is_promoted)
+
+
+
 
