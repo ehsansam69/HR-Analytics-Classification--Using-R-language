@@ -47,5 +47,13 @@ glm_pred[glm_prob>=0.50] = "yes"
 table(glm_pred, df2$is_promoted)
 
 
+##Linear Discriminant Analysis , LDA using MASS package
+lda_fit = lda(is_promoted~., data = df2)
+lda_fit
+lda_pred = predict(lda_fit,df2)
+lda_pred$posterior   # model probabilities 
+lda_class = lda_pred$class
+table(lda_class, df$is_promoted)
+sum(lda_pred$posterior[ , 1] > 0.8) #numebr of values which probabilities for result 1 in more than 0.8 
 
 
