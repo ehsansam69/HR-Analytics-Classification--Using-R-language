@@ -34,3 +34,13 @@ summary(glm_fit)
 
 glm_fit = glm(is_promoted~., data = df2)
 summary(glm_fit)
+
+#probability of predicted values
+glm_prob = predict(glm_fit, type="response")
+glm_prob[1:10]
+
+glm_pred = rep("no", 54808)
+#where the probability is higher or equal to 50%. the values is yes
+glm_pred[glm_prob>=0.50] = "yes"
+
+
